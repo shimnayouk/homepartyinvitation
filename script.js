@@ -1,9 +1,16 @@
+// Supabase Configuration
+const SUPABASE_URL = 'https://viqkuzrksrbejvuiiqvd.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZpcWt1enJrc3JiZWp2dWlpcXZkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjI2Nzg3MTgsImV4cCI6MjA3ODI1NDcxOH0.nPAK5Ppb2tlg4bUFqZh4KrEYZ7MXiwA1Fk0VBUVWndA';
+
+// Initialize Supabase client
+const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
 // RSVP Form Handler
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('rsvpForm');
     const confirmMessage = document.getElementById('confirmMessage');
 
-    form.addEventListener('submit', function(e) {
+    form.addEventListener('submit', async function(e) {
         e.preventDefault();
 
         // Get form values
@@ -27,26 +34,42 @@ document.addEventListener('DOMContentLoaded', function() {
         const formData = {
             name: name,
             attendance: attendance.value,
-            companions: companions,
+            companions: parseInt(companions),
             message: message,
-            timestamp: new Date().toISOString()
+            created_at: new Date().toISOString()
         };
 
-        // Log to console (for now - later can connect to Google Forms or backend)
-        console.log('RSVP Submitted:', formData);
+        try {
+            // Save to Supabase
+            const { data, error } = await supabase
+                .from('rsvp')
+                .insert([formData]);
 
-        // Show confirmation message
-        confirmMessage.classList.add('show');
+            if (error) {
+                console.error('Error saving RSVP:', error);
+                alert('참석 여부 저장 중 오류가 발생했습니다. 다시 시도해주세요.');
+                return;
+            }
 
-        // Reset form
-        form.reset();
+            console.log('RSVP saved successfully:', data);
 
-        // Hide confirmation after 5 seconds
-        setTimeout(function() {
-            confirmMessage.classList.remove('show');
-        }, 5000);
+            // Show confirmation message
+            confirmMessage.classList.add('show');
 
-        // Scroll to confirmation message
-        confirmMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            // Reset form
+            form.reset();
+
+            // Hide confirmation after 5 seconds
+            setTimeout(function() {
+                confirmMessage.classList.remove('show');
+            }, 5000);
+
+            // Scroll to confirmation message
+            confirmMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+        } catch (err) {
+            console.error('Unexpected error:', err);
+            alert('참석 여부 저장 중 오류가 발생했습니다. 다시 시도해주세요.');
+        }
     });
 });
