@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sienna's 2026 Home Party</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Sienna's Home Party</h1>
+            <p class="hero-tagline">2026년의 마지막 달, 함께 웃어요</p>
+        </div>
+    </section>
+
+    <!-- Event Info Section -->
+    <section class="event-info">
+        <div class="container">
+            <div class="info-card">
+                <div class="info-item">
+                    <span class="icon">📅</span>
+                    <div class="info-text">
+                        <h3>날짜</h3>
+                        <p>2026년 12월 1일 (금)</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <span class="icon">🕐</span>
+                    <div class="info-text">
+                        <h3>시간</h3>
+                        <p>오후 6:30</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <span class="icon">📍</span>
+                    <div class="info-text">
+                        <h3>장소</h3>
+                        <p>서울 송파구 OO로 OO</p>
+                        <a href="https://map.kakao.com/" target="_blank" class="map-link">지도 보기</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery">
+        <div class="container">
+            <h2 class="section-title">우리 집에서 만나요</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="img/img1.png" alt="Home exterior view 1">
+                </div>
+                <div class="gallery-item">
+                    <img src="img/img2.png" alt="Home exterior view 2">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RSVP Section -->
+    <section class="rsvp">
+        <div class="container">
+            <h2 class="section-title">참석 여부를 알려주세요</h2>
+            <form id="rsvpForm" class="rsvp-form">
+                <div class="form-group">
+                    <label for="name">이름 *</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label>참석 여부 *</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="attendance" value="참석" required>
+                            <span>참석할게요!</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="attendance" value="불참" required>
+                            <span>아쉽지만 불참이에요</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="companions">동행 인원 (본인 포함)</label>
+                    <select id="companions" name="companions">
+                        <option value="1">1명 (혼자)</option>
+                        <option value="2">2명</option>
+                        <option value="3">3명</option>
+                        <option value="4">4명</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">한마디</label>
+                    <textarea id="message" name="message" rows="3" placeholder="기대되는 마음, 준비할 것 등 자유롭게 남겨주세요"></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">보내기</button>
+            </form>
+            <div id="confirmMessage" class="confirm-message">참석 확인 고마워요!</div>
+        </div>
+    </section>
+
+    <!-- Notice Section -->
+    <section class="notice">
+        <div class="container">
+            <h2 class="section-title">안내사항</h2>
+            <div class="notice-grid">
+                <div class="notice-item">
+                    <span class="notice-icon">🚗</span>
+                    <h3>주차</h3>
+                    <p>건물 지하 주차장 이용 가능<br>또는 대중교통 추천</p>
+                </div>
+                <div class="notice-item">
+                    <span class="notice-icon">🍽️</span>
+                    <h3>음식</h3>
+                    <p>간단한 핑거푸드와<br>음료를 준비할게요</p>
+                </div>
+                <div class="notice-item">
+                    <span class="notice-icon">👕</span>
+                    <h3>복장</h3>
+                    <p>편한 캐주얼<br>자유롭게 입고 오세요</p>
+                </div>
+                <div class="notice-item">
+                    <span class="notice-icon">🎁</span>
+                    <h3>선물</h3>
+                    <p>마음만으로도 충분해요<br>빈손 환영!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Made with ❤️ by Sienna</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
